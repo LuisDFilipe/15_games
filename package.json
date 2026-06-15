@@ -1,0 +1,30 @@
+{
+  "name": "phaser-games-app",
+  "version": "1.0.0",
+  "description": "Phaser.js + Capacitor Android app with multiple games",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
+    "capacitor:sync": "capacitor sync android",
+    "capacitor:build": "capacitor build android",
+    "capacitor:run": "capacitor run android",
+    "android:open": "capacitor open android"
+  },
+  "dependencies": {
+    "phaser": "^3.60.0",
+    "@capacitor/core": "^6.1.0",
+    "@capacitor/android": "^6.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0",
+    "webpack": "^5.90.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1",
+    "ts-loader": "^9.5.1",
+    "html-webpack-plugin": "^5.6.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "@capacitor/cli": "^6.1.0"
+  }
+}
