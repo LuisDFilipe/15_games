@@ -116,8 +116,9 @@ export default class MemoryGameScene extends Phaser.Scene {
         const y = boardStartY + row * cellSize;
         const index = cardIndex;
 
-        const card = this.add.rectangle(x + cellSize / 2, y + cellSize / 2, cellSize - 12, cellSize - 12, UI.colors.teal)
-          .setStrokeStyle(2, UI.colors.headerDark)
+        const card = this.add.rectangle(x + cellSize / 2, y + cellSize / 2, cellSize - 12, cellSize - 12)
+          .setFillStyle(UI.toColorNumber(UI.colors.teal))
+          .setStrokeStyle(2, UI.toColorNumber(UI.colors.headerDark))
           .setInteractive({ useHandCursor: true })
           .setData('isMatched', false)
           .on('pointerdown', () => this.flipCard(index))
@@ -157,7 +158,7 @@ export default class MemoryGameScene extends Phaser.Scene {
 
     card.isFlipped = true;
     this.cardTexts.get(index)!.setText(symbol);
-    this.cardGraphics.get(index)!.setFillStyle(UI.colors.surfaceSoft);
+    this.cardGraphics.get(index)!.setFillStyle(UI.toColorNumber(UI.colors.surfaceSoft));
     this.cardTexts.get(index)!.setColor(UI.colors.text);
 
     this.selectedCards.push(index);
@@ -180,8 +181,8 @@ export default class MemoryGameScene extends Phaser.Scene {
       this.cards[firstIndex].isMatched = true;
       this.cards[secondIndex].isMatched = true;
 
-      this.cardGraphics.get(firstIndex)!.setFillStyle(UI.colors.green).setData('isMatched', true);
-      this.cardGraphics.get(secondIndex)!.setFillStyle(UI.colors.green).setData('isMatched', true);
+      this.cardGraphics.get(firstIndex)!.setFillStyle(UI.toColorNumber(UI.colors.green)).setData('isMatched', true);
+      this.cardGraphics.get(secondIndex)!.setFillStyle(UI.toColorNumber(UI.colors.green)).setData('isMatched', true);
       this.cardTexts.get(firstIndex)!.setColor('#ffffff');
       this.cardTexts.get(secondIndex)!.setColor('#ffffff');
 
@@ -199,12 +200,12 @@ export default class MemoryGameScene extends Phaser.Scene {
         this.cards[firstIndex].isFlipped = false;
         this.cardTexts.get(firstIndex)!.setText('?');
         this.cardTexts.get(firstIndex)!.setColor('#ffffff');
-        this.cardGraphics.get(firstIndex)!.setFillStyle(UI.colors.teal);
+        this.cardGraphics.get(firstIndex)!.setFillStyle(UI.toColorNumber(UI.colors.teal));
 
         this.cards[secondIndex].isFlipped = false;
         this.cardTexts.get(secondIndex)!.setText('?');
         this.cardTexts.get(secondIndex)!.setColor('#ffffff');
-        this.cardGraphics.get(secondIndex)!.setFillStyle(UI.colors.teal);
+        this.cardGraphics.get(secondIndex)!.setFillStyle(UI.toColorNumber(UI.colors.teal));
 
         this.selectedCards = [];
         this.canClick = true;

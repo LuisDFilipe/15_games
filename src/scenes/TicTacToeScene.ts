@@ -85,18 +85,19 @@ export default class TicTacToeScene extends Phaser.Scene {
         const x = boardStartX + col * cellSize;
         const y = boardStartY + row * cellSize;
 
-        const cell = this.add.rectangle(x + cellSize / 2, y + cellSize / 2, cellSize - 8, cellSize - 8, 0xf7fbfb)
-          .setStrokeStyle(2, UI.colors.border)
+        const cell = this.add.rectangle(x + cellSize / 2, y + cellSize / 2, cellSize - 8, cellSize - 8)
+          .setFillStyle(UI.toColorNumber(UI.colors.lightCyan))
+          .setStrokeStyle(2, UI.toColorNumber(UI.colors.border))
           .setInteractive({ useHandCursor: true })
           .on('pointerdown', () => this.handleCellClick(index))
           .on('pointerover', () => {
             if (!this.gameOver && !this.computerThinking && this.board[index] === 0) {
-              cell.setFillStyle(0xe9f3f1);
+              cell.setFillStyle(UI.toColorNumber(UI.colors.surfaceSoft));
             }
           })
           .on('pointerout', () => {
             if (this.board[index] === 0) {
-              cell.setFillStyle(0x333333);
+              cell.setFillStyle(UI.toColorNumber(UI.colors.lightCyan));
             }
           });
 
@@ -152,14 +153,14 @@ export default class TicTacToeScene extends Phaser.Scene {
       if (this.board[i] === 1) {
         this.cellTexts[i].setText('X');
         this.cellTexts[i].setColor('#2f8f8a');
-        this.cellGraphics[i].setFillStyle(0xd9efeb);
+        this.cellGraphics[i].setFillStyle(UI.toColorNumber(UI.colors.lightBlue));
       } else if (this.board[i] === -1) {
         this.cellTexts[i].setText('O');
         this.cellTexts[i].setColor('#d95d63');
-        this.cellGraphics[i].setFillStyle(0xf9dfdf);
+        this.cellGraphics[i].setFillStyle(UI.toColorNumber(UI.colors.lightRed));
       } else {
         this.cellTexts[i].setText('');
-        this.cellGraphics[i].setFillStyle(0xf7fbfb);
+        this.cellGraphics[i].setFillStyle(UI.toColorNumber(UI.colors.lightCyan));
       }
     }
   }

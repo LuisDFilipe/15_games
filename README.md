@@ -53,7 +53,12 @@ npm install
 npm run build
 ```
 
-3. For development with hot reload:
+3. Build the SDK (Windows PowerShell):
+```powershell
+powershell -ExecutionPolicy Bypass -File .\build-sdk.ps1 -Clean
+```
+
+4. For development with hot reload:
 ```bash
 npm run dev
 ```

@@ -68,7 +68,7 @@ export default class GameSelectionScene extends Phaser.Scene {
       buttonHeight,
       'High Scores',
       () => this.scene.start('Scores'),
-      { fill: UI.colors.yellow, hoverFill: 0xe4b54e, textColor: '#20313a', fontSize: '26px' }
+      { fill: UI.colors.yellow, hoverFill: UI.colors.yellowHover, textColor: '#20313a', fontSize: '26px' }
     );
 
     createTextButton(

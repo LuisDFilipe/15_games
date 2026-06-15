@@ -37,7 +37,7 @@ export default class ScoresScene extends Phaser.Scene {
     this.createFilterButton(width * 0.74, 100, 'Memory', 'memory');
     createTextButton(this, width * 0.86, height - 70, 160, 50, 'Clear', () => this.clearScores(), {
       fill: UI.colors.red,
-      hoverFill: 0xb4494f,
+      hoverFill: UI.colors.redHover,
       fontSize: '17px',
     });
 
@@ -56,7 +56,7 @@ export default class ScoresScene extends Phaser.Scene {
       () => this.refreshScores(filter),
       {
         fill: active ? UI.colors.yellow : UI.colors.teal,
-        hoverFill: active ? 0xe4b54e : UI.colors.tealDark,
+        hoverFill: active ? UI.colors.yellowHover : UI.colors.tealDark,
         textColor: active ? UI.colors.text : '#ffffff',
         fontSize: '15px',
       }
@@ -122,10 +122,11 @@ export default class ScoresScene extends Phaser.Scene {
     for (let i = 0; i < displayCount; i++) {
       const score = scores[i];
       const y = startY + i * lineHeight;
-      const bgColor = i % 2 === 0 ? 0xf7fbfb : 0xeef6f5;
+      const bgColor = i % 2 === 0 ? UI.colors.lightCyan : UI.colors.lightCyanAlt;
 
-      this.add.rectangle(width / 2, y + lineHeight / 2, width - 40, lineHeight - 10, bgColor)
-        .setStrokeStyle(1, UI.colors.border);
+      this.add.rectangle(width / 2, y + lineHeight / 2, width - 40, lineHeight - 10)
+        .setFillStyle(UI.toColorNumber(bgColor))
+        .setStrokeStyle(1, UI.toColorNumber(UI.colors.border));
 
       this.add.text(width * 0.1, y, `#${i + 1}`, {
         fontFamily: UI.font,
